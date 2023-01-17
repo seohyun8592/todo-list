@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Todo.module.css';
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { v4 as uuidv4 } from 'uuid';
 
 export default function Todo({ todo, onUpdate, onDelete }) {
   const { id, status, text } = todo;
