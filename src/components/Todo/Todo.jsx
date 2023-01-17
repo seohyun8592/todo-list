@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './Todo.module.css';
 import { FaRegTrashAlt } from 'react-icons/fa';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Todo({ todo, onUpdate, onDelete }) {
-  const { status, text } = todo;
+  const { id, status, text } = todo;
   const handleChange = (e) => {
     const status = e.target.checked ? 'completed' : 'active';
     onUpdate({ ...todo, status });
@@ -17,13 +18,13 @@ export default function Todo({ todo, onUpdate, onDelete }) {
     <li className={styles.list}>
       <div className={styles.left}>
         <input
-          id="checkbox"
+          id={id}
           type="checkbox"
           checked={status === 'completed'}
           onChange={handleChange}
           className={styles.input}
         />
-        <label htmlFor="checkbox">{text}</label>
+        <label htmlFor={id}>{text}</label>
       </div>
 
       <button onClick={handleDelete} className={styles.delete}>
